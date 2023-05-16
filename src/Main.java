@@ -15,5 +15,7 @@ public class Main {
             System.out.println(dd.getDate()+" "+dd.getTime());
         }
 
+        System.out.println("Error");
+
     }
 }
