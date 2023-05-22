@@ -21,7 +21,7 @@ public class IUDoctorMenu {
             response = Integer.valueOf(sc.nextLine());
 
             switch (response){
-                case 1:
+                case 1: showAddAvailableAppointmentsMenu();
                     break;
                 case 2:
                     break;
@@ -50,7 +50,7 @@ public class IUDoctorMenu {
 
              if (response>0 && response<4){
                  int monthSelected = response;
-                 System.out.println(monthSelected+" . "+IUMenu.MONTHS[monthSelected]);
+                 System.out.println(monthSelected+" . "+IUMenu.MONTHS[monthSelected-1]);
                  System.out.println("Inser day Available {dd/mm/yyyy}");
                  String date=sc.nextLine();
                  System.out.println("your date is "+date+"1.Correct \n 2. change date");

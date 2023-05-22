@@ -66,6 +66,7 @@ public class IUMenu {
                     if(d.getEmail().equals(email)){
                         emailCorrect=true;
                         doctorLogged=d;
+                        IUDoctorMenu.showDoctorMenu();
                     }
                 }
             }
