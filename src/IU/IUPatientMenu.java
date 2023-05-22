@@ -23,6 +23,7 @@ public class IUPatientMenu {
 
             switch (response){
                 case 1:
+                    showBookAppointmentMenu();
                     break;
                 case 2:
                     break;
@@ -55,7 +56,46 @@ public class IUPatientMenu {
             }
             Scanner sc = new Scanner(System.in);
             int responseDateSelected = Integer.valueOf(sc.nextLine());
+            Map<Integer,Doctor> doctorAvailableSelected = doctors.get(responseDateSelected);
+            Integer indexDate=0;
+            Doctor doctorSelected = new Doctor("","");
+            for (Map.Entry<Integer,Doctor> doc:doctorAvailableSelected.entrySet()) {
+                indexDate = doc.getKey();
+                doctorSelected = doc.getValue();
+            }
+            System.out.println(doctorSelected.getName()+" .Date: "+
+                            doctorSelected.getAvailableAppointments().get(indexDate).getDate()+
+                    " Time: "+
+                    doctorSelected.getAvailableAppointments().get(indexDate).getTime());
+            System.out.println("confirm your appointment: \n 1.Yes \n 2.Change data");
+            response=Integer.valueOf(sc.nextLine());
 
+            if(response==1){
+              IUMenu.patienLogged.AddAppointmentDoctors(doctorSelected
+              ,doctorSelected.getAvailableAppointments().get(indexDate).getDate(null),
+              doctorSelected.getAvailableAppointments().get(indexDate).getTime());
+
+              showPatientMenu();
+            }
+
+        }while (response!=0);
+    }
+    private static void showPatientMyAppointments(){
+        int response = 0;
+        do {
+            System.out.println(":: My appointments");
+            if(IUMenu.patienLogged.getAppointmentDoctors().size()==0){
+                System.out.println("Dont have Appointment");
+                break;
+            }
+            for (int i = 0; i <IUMenu.patienLogged.getAppointmentDoctors().size() ; i++) {
+                  int j = i+1;
+                System.out.println(j+". "+
+                        IUMenu.patienLogged.getAppointmentDoctors().get(i).getDate()+
+                        "Date "+IUMenu.patienLogged.getAppointmentDoctors().get(i).getTime()+
+                        "Doctor: "+ IUMenu.patienLogged.getAppointmentDoctors().get(i).getDoctor().getName());
+            }
+            System.out.println("0. return");
         }while (response!=0);
     }
 }
