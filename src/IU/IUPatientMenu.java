@@ -13,7 +13,7 @@ public class IUPatientMenu {
         do {
             System.out.println();
             System.out.println("Patient");
-            System.out.println("Welcome "+IUMenu.patienLogged);
+            System.out.println("Welcome "+IUMenu.patienLogged.getName());
             System.out.println("1. Book an appointment");
             System.out.println("2. My appointments");
             System.out.println("0. Logout");
@@ -26,6 +26,7 @@ public class IUPatientMenu {
                     showBookAppointmentMenu();
                     break;
                 case 2:
+                    showPatientMyAppointments();
                     break;
                 case 0:
                     IUMenu.showMenu();

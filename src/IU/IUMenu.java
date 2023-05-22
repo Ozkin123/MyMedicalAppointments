@@ -75,6 +75,7 @@ public class IUMenu {
                     if(p.getEmail().equals(email)){
                         emailCorrect=true;
                         patienLogged=p;
+                        IUPatientMenu.showPatientMenu();
                     }
                 }
             }
